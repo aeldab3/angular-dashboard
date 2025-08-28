@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -14,8 +14,10 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class ControlComponent {
   @Input() label!: string;
+  @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
 
   onClick() {
     console.log(`${this.label} clicked`);
+    console.log(this.control?.nativeElement.value);
   }
 }

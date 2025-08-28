@@ -1,1 +1,17 @@
-<app-new-ticket />
+<div>
+  <ul>
+    <li *ngFor="let ticket of tickets">
+      <app-ticket [data]="ticket" (close)="onCloseTicket(ticket.id)" />
+    </li>
+    <!-- @for (ticket of tickets; track ticket.id) {
+      <li>
+        <app-ticket /> - {{ $first }}
+      </li>
+    } @empty {
+      <li>No tickets found</li>
+    } -->
+  </ul>
+</div>
+<div id="new-ticket">
+  <app-new-ticket (add)="onAdd($event)" />
+</div>
